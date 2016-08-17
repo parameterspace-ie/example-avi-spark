@@ -23,6 +23,8 @@ api_urls = format_suffix_patterns(api_urls)
 
 urlpatterns = patterns(
     '',
+    url(r'^$', views_api.SparkJobList.as_view(), name='index'),
+
     url(r'^api/', include(api_urls, namespace='api')),
 
     url(r'^job_list/', include(plugins_urls, namespace='plugins')),
