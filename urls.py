@@ -27,7 +27,7 @@ urlpatterns = patterns(
 
     url(r'^api/', include(api_urls, namespace='api')),
 
-    url(r'^job_list/', include(job_list_urls, namespace='plugins')),
+    url(r'^job_list/', include(job_list_urls, namespace='job_list')),
 
     # URLs with the next two names are required
     url(r'^result/(?P<job_id>[0-9]+)/$', views_api.JobResult.as_view(), name='job_result'),
