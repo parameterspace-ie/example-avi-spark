@@ -13,7 +13,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer, AdminRenderer
 
-from pipeline import manager
 from avi.models import SparkJob
 from avi.serializers import SparkJobSerializer, ViewJobsSerializer
 
@@ -37,7 +36,7 @@ class JobResult(APIView):
         """
         Returns the JSON result for a job.
         """
-        file_path = manager.get_pipeline_status(job_id)['output']
+        file_path = job.request.result_path
         with open(file_path, 'r') as out_file:
             job_result = json.load(out_file)
         logger.info('Returning job_result: %s' % job_result)
