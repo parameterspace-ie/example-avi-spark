@@ -36,6 +36,7 @@ class JobResult(APIView):
         """
         Returns the JSON result for a job.
         """
+        job = get_object_or_404(SparkJob, request_id=job_id)
         file_path = job.request.result_path
         with open(file_path, 'r') as out_file:
             job_result = json.load(out_file)
